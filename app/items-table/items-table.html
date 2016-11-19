@@ -1,0 +1,35 @@
+
+ <form class="form-inline row">
+    <div class="form-group col-xs-3">
+        <div class="input-group">
+            <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount" ng-model="vm.query">
+            <div class="input-group-addon">Search</div>
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th ng-repeat="itemHeader in vm.headerTable">
+            {{itemHeader}}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in vm.items | filter:vm.query">
+            <td >
+                <a ng-href="#items/{{item.id}}">{{item.title}}</a>
+            </td>
+            <td >
+                {{item.val1}}
+            </td>
+            <td>
+                {{item.val2}}
+            </td>
+            <td>
+                {{item.val3}}
+            </td>
+        </tr>
+    </tbody>
+</table>
