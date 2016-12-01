@@ -10,11 +10,11 @@
             replace: true,
             restrict: "E",
             templateUrl: 'nav-bar.html',
-            controller: 'ItemsController',
-            link: function (scope,el,attr,ItemsController ) {;
+            link: function (scope,el,attr,ItemsController ) {
                 // scope.isActive = cntrl.$state.current.url;
                 // console.log('current!!!',$state.current);
                 // scope.isActive = $state.current;
+                console.log('arg',arguments);
                 scope.panels = [
                     {
                         "name": "Items table view",

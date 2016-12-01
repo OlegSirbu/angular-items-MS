@@ -1,52 +1,73 @@
-// (function () {
-//     angular.module('app').factory('dataservices', getData);
-//
-//     /* @ngInject */
-//     function getData($http) {
-//         var dataItems = [
-//             {
-//                 val1: 'value 1',
-//                 val2: 'value 2',
-//                 val3: 'value 3',
-//                 title:'item 1',
-//                 img:'img/srcImg.png',
-//                 id: 1
-//             },
-//             {
-//                 val1: 'value 1',
-//                 val2: 'value 2',
-//                 val3: 'value 3',
-//                 title:'item 2',
-//                 img:'img/srcImg.png',
-//                 id: 2
-//             },
-//             {
-//                 val1: 'value 1',
-//                 val2: 'value 2',
-//                 val3: 'value 3',
-//                 title:'item 3',
-//                 img:'img/srcImg.png',
-//                 id: 3
-//             }
-//         ];
-//
-//         var itemTable = {
-//             headers: [
-//                 'item title',
-//                 'Property #1 title',
-//                 'Property #2 title',
-//                 'Property #3 title'
-//             ],
-//             data : dataItems
-//         };
-//
-//         function getItems() {
-//             $http.get('/items-table').respond(itemTable);
-//         }
-//
-//         return {
-//             getItems: getItems
-//         }
-//     }
-//
-// })();
+(function () {
+    angular.module('app').factory('dataservices', getData);
+
+    /* @ngInject */
+    function getData($q,$timeout) {
+        var dataItems = [
+            {
+                name: 'Hose',
+                lastName: 'Horche',
+                tel: '30123128321',
+                img: 'img/srcImg.png',
+                id: 1,
+                job: 'Manager'
+            },
+            {
+                name: 'Don',
+                lastName: 'Carlione',
+                tel: '51231266666',
+                img: 'img/srcImg.png',
+                id: 2,
+                job: 'Project manager'
+            },
+            {
+                name: 'Alex',
+                lastName: 'Bob',
+                tel: '33333666',
+                img: 'img/srcImg.png',
+                id: 3,
+                job: 'Driver'
+            }
+        ];
+
+        var itemTable = {
+            headers: [
+                'id',
+                'job',
+                'Name',
+                'Last name',
+                'tel'
+            ],
+            data: dataItems
+        };
+
+        function getItems() {
+            // var deferred = $q.defer();
+            // $timeout(function () {
+            //     deferred.resolve(itemTable);
+            // }, 1000);
+            //
+            // return deferred.promise;
+
+            return itemTable;
+        }
+
+        function update(id, data) {
+            console.log('update', arguments);
+            dataItems[id] = data;
+            return dataItems;
+        }
+        function deleteItem(i) {
+            console.log('deleteItem', i);
+            dataItems.splice(i, 1);
+            return dataItems;
+        }
+
+        return {
+            getItems: getItems,
+            deleteItem: deleteItem,
+            update: update
+        }
+    }
+
+})();

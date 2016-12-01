@@ -11,24 +11,27 @@
 <table class="table table-bordered">
     <thead>
     <tr>
-        <th ng-repeat="itemHeader in vm.headerTable">
+        <th ng-repeat="itemHeader in headerTable">
             {{itemHeader}}
         </th>
     </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in vm.items | filter:vm.query">
+        <tr ng-repeat="item in items | filter:query">
             <td >
-                <a ng-href="#items/{{item.id}}">{{item.title}}</a>
+                <a ng-href="#/items/{{item.id}}" ng-click="changeModalItem">{{item.id}}</a>
             </td>
             <td >
-                {{item.val1}}
+                {{item.job}}
+            </td>
+            <td >
+                {{item.name}}
             </td>
             <td>
-                {{item.val2}}
+                {{item.lastName}}
             </td>
             <td>
-                {{item.val3}}
+                {{item.tel}}
             </td>
         </tr>
     </tbody>

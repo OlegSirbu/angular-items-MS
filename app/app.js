@@ -14,7 +14,7 @@
                     .state('items', {
                         url: "/items",
                         abstract: true,
-                        controller: "ItemsController as vm",
+                        controller: "ItemsController",
                         templateUrl: "items.html"
                     })
                         .state('items.tile', {
@@ -32,10 +32,10 @@
                                     return $stateParams.id;
                                 }]
                             },
-                            controller: "CreateItem as vm",
+                            controller: "CreateItem",
                             templateUrl: "create-item.html"
                         });
-                
+
                 $urlRouterProvider
                     .otherwise('/items/view=table');
             }

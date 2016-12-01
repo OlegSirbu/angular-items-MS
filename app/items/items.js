@@ -2,14 +2,23 @@
     angular.module('app.items.module')
         .controller('ItemsController', ItemsController);
 
-    function ItemsController($scope, $rootScope, $http, $state) {
-        var vm = this;
-        $http.get('/items-table').then(function(response) {
-            vm.items = response.data.data;
-            vm.headerTable = response.data.headers;
+    function ItemsController($scope, dataservices) {
+        console.log('items', arguments);
 
-            vm.$state = $state;
-            // console.log('state', vm.$state);
-        });
+        var response = dataservices.getItems();
+        $scope.items = response.data;
+        $scope.headerTable = response.headers;
+
+        $scope.changeModalItem = function () {
+            
+        };
+
+        $scope.deleteClick = function (e) {
+            $scope.items.splice(id, 1);
+
+            console.log('$scope',$scope)
+        };
+
+        console.log('$scope.items',$scope.items)
     }
 })();
